@@ -68,21 +68,21 @@ While the core functionality and accessibility were prioritized, a few UI detail
 
 ## Chenges needed for production
 
-# Enable RLS Policies
+### Enable RLS Policies
 
 - Create a row level security policy at the database for slots table to let user only **update** rows where `booked = false` and restrict the update to `booked = false` AND `booked_by IS NOT NULL`
 
 - Create policies for SELECT to enable read access for users for table slots and rooms.
 
-# Move sensitive operations to a separate backend
+### Move sensitive operations to a separate backend
 
 A backend server to avoid exposing the Supabase key and bypassing RLS policies.
 
-# avoid data lost on refresh
+### avoid data lost on refresh
 
 Store the `selectedSlotId` or booking details in localStorage or pass via query params to avoid data loss on reload.
 
-# Use a good strategy to generate slots
+### Use a good strategy to generate slots
 
 When designing the system, I considered two main approaches for handling booking slots for production depending on the case:
 1- Pregenerated slots (Database-driven): generate new possible slots each day in Supabase and mark them with booked = false and delete past slots.
@@ -92,6 +92,6 @@ Only store booked slots, and dynamically generate availbale slot times on the fr
 
 - Current choice: For this coding case, I implemented the pre-generated slot model (mocked the data), this simplifies booking logic `.eq("booked", false)` and improves clarity.
 
-# Slot Grid rendering
+### Slot Grid rendering
 
 To display the available slots I used a semantic HTML <table> structure. The decision was made because of the nature of the table presented that looks like a table. This structure kept the code simpler and more readable. However because many cardSlots was inside one cell in the table, for future consideration, i might use a `role="grid"` approach for larger or more interactive applications to get more control over the layout and keyboard interactions.
