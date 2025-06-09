@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useBooking } from "@/context/BookingContext";
 import { supabase } from "@/lib/supabaseClient";
+import ModalBox from "@/components/ModalBox";
 
 export default function Confirm() {
   const [name, setName] = useState("");
   const { selectedSlotId } = useBooking();
+  const [confirmed, setConfirmed] = useState(false);
 
   const handleConfirm = async () => {
     const { error } = await supabase
@@ -20,12 +22,15 @@ export default function Confirm() {
       console.error("Error booking slot:", error);
       alert("Failed to book slot");
     } else {
+      setConfirmed(true);
       console.log(`Booking confirmed for ${name} at slotId: ${selectedSlotId}`);
+      setName("");
     }
   };
 
   return (
     <div className=" flex flex-col items-center justify-items-center min-h-screen p-6 pb-13 gap-16 sm:p-20">
+      {confirmed && <ModalBox />}
       <h1 className="text-[40px] leading-[1] ">Vem bokar?</h1>
 
       <div>
