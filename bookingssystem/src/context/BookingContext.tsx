@@ -2,7 +2,7 @@ import { createContext, useContext, useState, ReactNode } from "react";
 
 type BookingContextType = {
   selectedSlotId: number | null;
-  setSelectedSlotId: (id: number) => void;
+  setSelectedSlotId: (id: number | null) => void;
 };
 
 const BookingContext = createContext<BookingContextType | undefined>(undefined);

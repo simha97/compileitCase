@@ -1,12 +1,24 @@
-import NextButton from "@/components/NextButton";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
+
+  const handleNext = () => {
+    router.push("/booking");
+  };
+
   return (
-    <div
-      className={` flex flex-col items-center justify-items-center min-h-screen p-6 pb-13 gap-16 sm:p-20`}
+    <main
+      className={` flex flex-col items-center justify-items-center min-h-screen p-6 pb-12 gap-16`}
     >
       <h1 className="text-[80px] leading-[1] pt-25">Boka ett rum</h1>
-      <NextButton href="/booking">Boka</NextButton>
-    </div>
+      <button
+        onClick={handleNext}
+        aria-label="Gå till bokningssidan"
+        className="mt-auto w-full rounded-2xl bg-stone-900 p-3.5 text-white text-center"
+      >
+        Nästa
+      </button>
+    </main>
   );
 }

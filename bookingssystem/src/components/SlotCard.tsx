@@ -18,6 +18,8 @@ export default function SlotCard({ slot, room }: SlotCardProps) {
   return (
     <button
       onClick={handleSelect}
+      aria-pressed={isSelected}
+      aria-label={`Välj tid ${slot.time} på ${slot.date} i rum ${room.name}`}
       className={`w-full flex flex-col border-2 text-left rounded-lg p-1 mb-2 text-sm border-emerald-700 ${
         isSelected ? "bg-emerald-900 text-white" : ""
       }`}

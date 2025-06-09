@@ -11,8 +11,8 @@ interface SlotsTableProps {
 export default function SlotsTable({ availableSlots, rooms }: SlotsTableProps) {
   const days = ["18 okt", "19 okt", "20 okt"];
   return (
-    <>
-      <div className="flex justify-between">
+    <div className="flex-grow ">
+      <section className="flex justify-between mb-6">
         <button aria-label="Past 3 days">
           <ArrowLeftIcon />
         </button>
@@ -20,22 +20,30 @@ export default function SlotsTable({ availableSlots, rooms }: SlotsTableProps) {
         <button aria-label="Next 3 days">
           <ArrowRightIcon />
         </button>
-      </div>
+      </section>
 
-      <table className="w-full">
+      <table className="w-full flex-grow table-fixed overflow-auto">
         <thead>
           <tr>
             {days.map((day) => (
-              <th key={day} className="border border-stone-300 text-center">
+              <th
+                key={day}
+                scope="col"
+                className="border border-stone-300 text-center py-2"
+              >
                 {day}
               </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr className="h-full">
             {days.map((day) => (
-              <td key={day} className="border border-stone-300 align-top p-2">
+              <td
+                key={day}
+                aria-label={`Tider för ${day}`}
+                className="border border-stone-300 align-top p-2"
+              >
                 {availableSlots
                   .filter((slot) => slot.date === day)
                   .map((slot) => {
@@ -49,6 +57,6 @@ export default function SlotsTable({ availableSlots, rooms }: SlotsTableProps) {
           </tr>
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
