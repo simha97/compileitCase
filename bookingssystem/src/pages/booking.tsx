@@ -3,10 +3,12 @@ import SlotsTable from "@/components/SlotsTable";
 import { supabase } from "@/lib/supabaseClient";
 import { useEffect, useState } from "react";
 import { Room, Slot } from "@/types/type";
+import RoomFilter from "@/components/RoomFilter";
 
 export default function Booking() {
   const [availableSlots, setAvailableSlots] = useState<Slot[]>([]);
   const [rooms, setRooms] = useState<Room[]>([]);
+  const [filteredRooms, setFilteredRooms] = useState<Room[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,6 +26,7 @@ export default function Booking() {
       } else {
         setAvailableSlots(slotData);
         setRooms(roomData);
+        setFilteredRooms(roomData);
       }
     };
 
@@ -32,11 +35,16 @@ export default function Booking() {
 
   return (
     <div
-      className={` flex flex-col items-center justify-items-center min-h-screen p-6 pb-13 gap-16 sm:p-20`}
+      className={` flex flex-col  justify-items-center min-h-screen p-6 pb-13 gap-16 sm:p-20`}
     >
       <h1 className="text-[40px] leading-[1] ">Välj en tid</h1>
 
-      <SlotsTable availableSlots={availableSlots} rooms={rooms} />
+      <RoomFilter
+        rooms={rooms}
+        filteredRooms={filteredRooms}
+        setFilteredRooms={setFilteredRooms}
+      />
+      <SlotsTable availableSlots={availableSlots} rooms={filteredRooms} />
       <NextButton href="/confirm">Nästa</NextButton>
     </div>
   );

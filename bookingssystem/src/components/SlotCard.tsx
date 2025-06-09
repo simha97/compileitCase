@@ -18,7 +18,7 @@ export default function SlotCard({ slot, room }: SlotCardProps) {
   return (
     <button
       onClick={handleSelect}
-      className={`flex flex-col border-2 text-left m-2 rounded-lg p-2 text-sm border-emerald-700 ${
+      className={`w-full flex flex-col border-2 text-left rounded-lg p-1 mb-2 text-sm border-emerald-700 ${
         isSelected ? "bg-emerald-900 text-white" : ""
       }`}
     >
