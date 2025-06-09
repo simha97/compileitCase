@@ -37,7 +37,7 @@ export default function Booking() {
       <h1 className="text-[40px] leading-[1] ">Välj en tid</h1>
 
       <SlotsTable availableSlots={availableSlots} rooms={rooms} />
-      <NextButton href="/booking">Boka</NextButton>
+      <NextButton href="/confirm">Nästa</NextButton>
     </div>
   );
 }
