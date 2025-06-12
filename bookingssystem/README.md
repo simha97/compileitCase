@@ -53,7 +53,10 @@ INSERT INTO rooms (name, capacity) VALUES
 INSERT INTO slots (room_id, date, time, booked, booked_by) VALUES (1, '18 okt', '08:00-09:00', FALSE, NULL);
 INSERT INTO slots (room_id, date, time, booked, booked_by) VALUES (2, '18 okt', '08:00-09:00', FALSE, NULL);
 INSERT INTO slots (room_id, date, time, booked, booked_by) VALUES (3, '18 okt', '10:00-11:00', FALSE, NULL);
-INSERT INTO slots (room_id, date, time, booked, booked_by) VALUES (4, '18 okt', '11:00-12:00', FALSE, NULL);
+INSERT INTO slots (room_id, date, time, booked, booked_by) VALUES (4, '19 okt', '11:00-12:00', FALSE, NULL);
+INSERT INTO slots (room_id, date, time, booked, booked_by) VALUES (1, '19 okt', '14:00-15:00', FALSE, NULL);
+INSERT INTO slots (room_id, date, time, booked, booked_by) VALUES (3, '20 okt', '08:00-09:00', FALSE, NULL);
+INSERT INTO slots (room_id, date, time, booked, booked_by) VALUES (1, '20 okt', '10:00-11:00', FALSE, NULL);
 ```
 
 ## Mock Data
