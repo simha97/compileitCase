@@ -15,10 +15,46 @@ This project integrates the backend logic directly within the frontend for simpl
 ## Database Structure
 
 # Tables
-
+Create these tables in Supabase and add some data into them
 - rooms: id, name, capacity
 
 - slots: id, date, time, room_id (foreign key), booked, booked_by
+
+**or run this code in SQL supabase editor**:
+```
+CREATE TABLE rooms (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  capacity INTEGER NOT NULL
+);
+
+CREATE TABLE slots (
+  id SERIAL PRIMARY KEY,
+  date DATE NOT NULL,
+  time TIME NOT NULL,
+  room_id INTEGER REFERENCES rooms(id) ON DELETE CASCADE,
+  booked BOOLEAN DEFAULT FALSE,
+  booked_by TEXT
+);
+```
+
+**To insert data into rooms table, run this:**
+```
+INSERT INTO rooms (name, capacity) VALUES
+('Margret', 4),
+('Steve', 6),
+('Ada', 10),
+('Edmund', 10),
+('Grace', 20);
+```
+
+**To insert some data into the slot table, run these examples:**
+```
+INSERT INTO slots (room_id, date, time, booked, booked_by) VALUES (1, '18 okt', '08:00-09:00', FALSE, NULL);
+INSERT INTO slots (room_id, date, time, booked, booked_by) VALUES (2, '18 okt', '08:00-09:00', FALSE, NULL);
+INSERT INTO slots (room_id, date, time, booked, booked_by) VALUES (3, '18 okt', '10:00-11:00', FALSE, NULL);
+INSERT INTO slots (room_id, date, time, booked, booked_by) VALUES (4, '18 okt', '11:00-12:00', FALSE, NULL);
+```
 
 ## Mock Data
 
